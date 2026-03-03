@@ -33,7 +33,7 @@ const galleryImages = Array.from({ length: 30 }, (_, i) => ({
   // We use the logo as a fallback or for the first few to ensure something loads if the pattern is different
   url: i < 3 ? LOGO_URL : `${GITHUB_BASE}cabinet${i + 1}.jpg`,
   title: `M&N Project ${i + 1}`,
-  location: i % 2 === 0 ? "Bilar, Bohol" : "Tagbilaran City",
+  location: i % 2 === 0 ? "Baclayun, Bohol" : "Tagbilaran City",
   type: i % 3 === 0 ? "TV Console" : i % 3 === 1 ? "Kitchen" : "Wardrobe"
 }));
 
@@ -42,19 +42,19 @@ const services = [
     title: "Floating TV Consoles",
     description: "Hidden cables, LED lighting, and adjustable shelves for a modern look.",
     price: "₱18,500",
-    image: `${GITHUB_BASE}cabinet1.jpg` // Using the repo pattern
+    image: "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/TV.jpg"
   },
   {
     title: "Modular Kitchens",
     description: "Soft-close doors and full-extension drawers for maximum efficiency.",
     price: "₱45,000",
-    image: `${GITHUB_BASE}cabinet2.jpg`
+    image: "https://imgs.search.brave.com/v4eFuVl1GdDIHex_gVcf9mwh7oUd0X6ebXqX9rYLVWM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cmVnYWxva2l0Y2hl/bnMuY29tL2FydGlj/bGVzaW1nLzY3LW1v/ZHVsYXIta2l0Y2hl/bi1kZXNpZ24taWRl/YXMtYW5kLWltYWdl/cy0yMDI0LmpwZw"
   },
   {
     title: "Custom Wardrobes",
     description: "Built-in storage solutions that maximize your bedroom space.",
     price: "₱32,000",
-    image: `${GITHUB_BASE}cabinet3.jpg`
+    image: "https://imgs.search.brave.com/iV9fhavoNBH5brOcRRGXeINE5cKbT9j07yJGMGHUKYg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2NkL2Mx/L2Q2L2NkYzFkNjM5/YjIxMTJmYTBmOWI2/YjZkMDYyYzQ1Mzli/LmpwZw"
   }
 ];
 
