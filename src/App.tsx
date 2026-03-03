@@ -44,13 +44,18 @@ const services = [
   },
 ];
 
+// FIXED: Updated galleryImages with 10 unique images from Modular-RAW repository
 const galleryImages = [
-  { id: 1, url: `${GITHUB_BASE}project1.jpg`, title: "M&N Project 1", location: "Baclayun, Bohol", type: "TV Console" },
-  { id: 2, url: `${GITHUB_BASE}project2.jpg`, title: "M&N Project 2", location: "Tagbilaran City", type: "Kitchen" },
-  { id: 3, url: `${GITHUB_BASE}project3.jpg`, title: "M&N Project 3", location: "Bilar, Bohol", type: "Wardrobe" },
-  { id: 4, url: `${GITHUB_BASE}project4.jpg`, title: "M&N Project 4", location: "Tagbilaran City", type: "Kitchen" },
-  { id: 5, url: `${GITHUB_BASE}project5.jpg`, title: "M&N Project 5", location: "Dauis, Bohol", type: "TV Console" },
-  { id: 6, url: `${GITHUB_BASE}project6.jpg`, title: "M&N Project 6", location: "Panglao, Bohol", type: "Kitchen" },
+  { id: 1, url: "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/01.jpg", title: "M&N Project 1", location: "Baclayun, Bohol", type: "TV Console" },
+  { id: 2, url: "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/02.jpg", title: "M&N Project 2", location: "Tagbilaran City", type: "Kitchen" },
+  { id: 3, url: "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/03.jpg", title: "M&N Project 3", location: "Bilar, Bohol", type: "Wardrobe" },
+  { id: 4, url: "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/04.jpg", title: "M&N Project 4", location: "Tagbilaran City", type: "Kitchen" },
+  { id: 5, url: "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/05.jpg", title: "M&N Project 5", location: "Dauis, Bohol", type: "TV Console" },
+  { id: 6, url: "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/06.jpg", title: "M&N Project 6", location: "Panglao, Bohol", type: "Kitchen" },
+  { id: 7, url: "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/07.jpg", title: "M&N Project 7", location: "Corella, Bohol", type: "Wardrobe" },
+  { id: 8, url: "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/08.jpg", title: "M&N Project 8", location: "Sikatuna, Bohol", type: "TV Console" },
+  { id: 9, url: "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/09.jpg", title: "M&N Project 9", location: "Alburquerque, Bohol", type: "Kitchen" },
+  { id: 10, url: "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/10.jpg", title: "M&N Project 10", location: "Loay, Bohol", type: "Wardrobe" },
 ];
 
 export default function App() {
@@ -273,7 +278,7 @@ export default function App() {
                     alt={image.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     onError={(e) => {
-                      e.target.src = "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/02.jpg";
+                      e.target.src = "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/01.jpg";
                     }}
                   />
                 </div>
