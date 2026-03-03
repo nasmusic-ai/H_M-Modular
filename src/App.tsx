@@ -49,10 +49,13 @@ const galleryImages = [
   { id: 2, url: `${GITHUB_BASE}project2.jpg`, title: "M&N Project 2", location: "Tagbilaran City", type: "Kitchen" },
   { id: 3, url: `${GITHUB_BASE}project3.jpg`, title: "M&N Project 3", location: "Bilar, Bohol", type: "Wardrobe" },
   { id: 4, url: `${GITHUB_BASE}project4.jpg`, title: "M&N Project 4", location: "Tagbilaran City", type: "Kitchen" },
+  { id: 5, url: `${GITHUB_BASE}project5.jpg`, title: "M&N Project 5", location: "Dauis, Bohol", type: "TV Console" },
+  { id: 6, url: `${GITHUB_BASE}project6.jpg`, title: "M&N Project 6", location: "Panglao, Bohol", type: "Kitchen" },
 ];
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -231,6 +234,126 @@ export default function App() {
           ))}
         </div>
       </section>
+
+      {/* GALLERY SECTION */}
+      <section id="gallery" className="py-24 bg-stone-950">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+                OUR <span className="text-amber-400">PROJECTS</span>
+              </h2>
+              <p className="text-stone-400 max-w-2xl mx-auto">
+                Browse through our completed projects across Bohol
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Gallery Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryImages.map((image, index) => (
+              <motion.div
+                key={image.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                onClick={() => setSelectedImage(image)}
+                className="group relative cursor-pointer overflow-hidden rounded-2xl bg-stone-900"
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={image.url}
+                    alt={image.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    onError={(e) => {
+                      e.target.src = "https://via.placeholder.com/400x300?text=Project+Image";
+                    }}
+                  />
+                </div>
+                
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-xl font-bold text-white mb-1">{image.title}</h3>
+                    <p className="text-amber-400 text-sm mb-2">{image.type}</p>
+                    <p className="text-stone-300 text-sm flex items-center gap-1">
+                      <MapPin size={14} /> {image.location}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* View All Button */}
+          <div className="text-center mt-12">
+            <button className="bg-amber-600 hover:bg-amber-500 text-white px-8 py-3 rounded-full font-bold text-lg transition-all inline-flex items-center gap-2">
+              VIEW ALL PROJECTS <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-5xl w-full bg-stone-900 rounded-3xl overflow-hidden"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
+              >
+                <X size={24} />
+              </button>
+
+              {/* Image */}
+              <div className="aspect-video">
+                <img
+                  src={selectedImage.url}
+                  alt={selectedImage.title}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.src = "https://via.placeholder.com/800x600?text=Project+Image";
+                  }}
+                />
+              </div>
+
+              {/* Image Info */}
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-white mb-2">{selectedImage.title}</h3>
+                <div className="flex flex-wrap gap-4 text-stone-300">
+                  <p className="flex items-center gap-1">
+                    <MapPin size={16} className="text-amber-400" /> {selectedImage.location}
+                  </p>
+                  <p className="flex items-center gap-1">
+                    <Hammer size={16} className="text-amber-400" /> {selectedImage.type}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* FOOTER */}
       <footer className="py-12 bg-stone-950 border-t border-stone-900 text-center">
