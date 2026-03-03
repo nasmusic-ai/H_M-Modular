@@ -273,7 +273,7 @@ export default function App() {
                     alt={image.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     onError={(e) => {
-                      e.target.src = "https://via.placeholder.com/400x300?text=Project+Image";
+                      e.target.src = "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/02.jpg";
                     }}
                   />
                 </div>
@@ -333,7 +333,7 @@ export default function App() {
                   alt={selectedImage.title}
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                    e.target.src = "https://via.placeholder.com/800x600?text=Project+Image";
+                    e.target.src = "https://raw.githubusercontent.com/janzel2015/Modular-RAW/main/01.jpg";
                   }}
                 />
               </div>
