@@ -25,18 +25,6 @@ const GITHUB_BASE = "https://raw.githubusercontent.com/etherneomdc3-IT/RAW/main/
 const LOGO_URL = `${GITHUB_BASE}noellogo.png`;
 const HERO_VIDEO_URL = `${GITHUB_BASE}noel.mp4`;
 
-// Generating 30 gallery items. 
-// We'll use the GitHub RAW pattern for the URLs.
-const galleryImages = Array.from({ length: 30 }, (_, i) => ({
-  id: i + 1,
-  // Assuming images are named cabinet1.jpg, cabinet2.jpg, etc. in the repo
-  // We use the logo as a fallback or for the first few to ensure something loads if the pattern is different
-  url: i < 3 ? LOGO_URL : `${GITHUB_BASE}cabinet${i + 1}.jpg`,
-  title: `M&N Project ${i + 1}`,
-  location: i % 2 === 0 ? "Baclayun, Bohol" : "Tagbilaran City",
-  type: i % 3 === 0 ? "TV Console" : i % 3 === 1 ? "Kitchen" : "Wardrobe"
-}));
-
 const services = [
   {
     title: "Floating TV Consoles",
@@ -57,6 +45,81 @@ const services = [
     image: "https://imgs.search.brave.com/iV9fhavoNBH5brOcRRGXeINE5cKbT9j07yJGMGHUKYg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2NkL2Mx/L2Q2L2NkYzFkNjM5/YjIxMTJmYTBmOWI2/YjZkMDYyYzQ1Mzli/LmpwZw"
   }
 ];
+
+const galleryImages = [
+  {
+    id: 1,
+    url: "https://raw.githubusercontent.com/etherneomdc3-IT/RAW/main/project1.jpg",
+    title: "M&N Project 1",
+    location: "Baclayun, Bohol",
+    materials: {
+      coreStructural: [
+        "Plywood – Strong, durable, moisture-resistant (especially BWR/BWP grades)",
+        "MDF (Medium Density Fiberboard) – Smooth finish, ideal for painted surfaces",
+        "HDF (High Density Fiberboard) – Denser than MDF, used for back panels",
+        "Particle Board – Budget-friendly option, lighter and less durable",
+        "Blockboard – Good for long vertical panels and shelves",
+        "Solid Wood – Premium option for strength and aesthetics"
+      ],
+      shutterDoor: [
+        "MDF (painted or routed designs)",
+        "Plywood with Laminate",
+        "Solid Wood",
+        "Acrylic Panels",
+        "PVC Boards",
+        "Glass (clear, frosted, tinted)",
+        "Aluminum Frame with Glass Insert"
+      ],
+      surfaceFinishes: [
+        "Laminate (HPL – High Pressure Laminate)",
+        "Acrylic Finish",
+        "PU (Polyurethane) Paint",
+        "Veneer",
+        "Membrane Finish",
+        "UV Coated Panels",
+        "Lacquered Glass"
+      ],
+      edgeBanding: [
+        "PVC Edge Banding",
+        "ABS Edge Banding",
+        "Veneer Edge Tape",
+        "Acrylic Edge Banding"
+      ],
+      hardwareComponents: [
+        "Hinges (soft-close, hydraulic)",
+        "Drawer Channels / Runners",
+        "Handles / Knobs",
+        "Lift-Up Mechanisms",
+        "Corner Mechanisms",
+        "Pull-Out Systems",
+        "Screws & Fasteners",
+        "Magnetic Catches"
+      ],
+      backPanel: [
+        "HDF",
+        "MDF",
+        "Plywood (thin gauge)"
+      ],
+      accessories: [
+        "Wire Baskets (stainless steel)",
+        "Cutlery Trays (plastic/wood)",
+        "Tandem Boxes",
+        "Glass Shelves",
+        "LED Strip Lighting",
+        "Profile Handles (aluminum)"
+      ]
+    }
+  }
+];
+  {
+    id: 4,
+    url: "https://raw.githubusercontent.com/etherneomdc3-IT/RAW/main/project4.jpg",
+    title: "M&N Project 4",
+    location: "Tagbilaran City",
+    type: "Kitchen"
+  }
+];
+
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -164,7 +227,7 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold tracking-widest mb-6 border border-emerald-500/20">
-              ● LIVE IN BOHOL
+              ● BACLAYUN BOHOL SHOWROOM
             </span>
             <h1 className="font-display text-5xl md:text-8xl font-bold text-white mb-6 leading-[0.9] tracking-tighter">
               MODULAR CABINETS<br />
