@@ -52,65 +52,22 @@ const galleryImages = [
     url: "https://raw.githubusercontent.com/etherneomdc3-IT/RAW/main/project1.jpg",
     title: "M&N Project 1",
     location: "Baclayun, Bohol",
-    materials: {
-      coreStructural: [
-        "Plywood – Strong, durable, moisture-resistant (especially BWR/BWP grades)",
-        "MDF (Medium Density Fiberboard) – Smooth finish, ideal for painted surfaces",
-        "HDF (High Density Fiberboard) – Denser than MDF, used for back panels",
-        "Particle Board – Budget-friendly option, lighter and less durable",
-        "Blockboard – Good for long vertical panels and shelves",
-        "Solid Wood – Premium option for strength and aesthetics"
-      ],
-      shutterDoor: [
-        "MDF (painted or routed designs)",
-        "Plywood with Laminate",
-        "Solid Wood",
-        "Acrylic Panels",
-        "PVC Boards",
-        "Glass (clear, frosted, tinted)",
-        "Aluminum Frame with Glass Insert"
-      ],
-      surfaceFinishes: [
-        "Laminate (HPL – High Pressure Laminate)",
-        "Acrylic Finish",
-        "PU (Polyurethane) Paint",
-        "Veneer",
-        "Membrane Finish",
-        "UV Coated Panels",
-        "Lacquered Glass"
-      ],
-      edgeBanding: [
-        "PVC Edge Banding",
-        "ABS Edge Banding",
-        "Veneer Edge Tape",
-        "Acrylic Edge Banding"
-      ],
-      hardwareComponents: [
-        "Hinges (soft-close, hydraulic)",
-        "Drawer Channels / Runners",
-        "Handles / Knobs",
-        "Lift-Up Mechanisms",
-        "Corner Mechanisms",
-        "Pull-Out Systems",
-        "Screws & Fasteners",
-        "Magnetic Catches"
-      ],
-      backPanel: [
-        "HDF",
-        "MDF",
-        "Plywood (thin gauge)"
-      ],
-      accessories: [
-        "Wire Baskets (stainless steel)",
-        "Cutlery Trays (plastic/wood)",
-        "Tandem Boxes",
-        "Glass Shelves",
-        "LED Strip Lighting",
-        "Profile Handles (aluminum)"
-      ]
-    }
-  }
-];
+    type: "TV Console"
+  },
+  {
+    id: 2,
+    url: "https://raw.githubusercontent.com/etherneomdc3-IT/RAW/main/project2.jpg",
+    title: "M&N Project 2",
+    location: "Tagbilaran City",
+    type: "Kitchen"
+  },
+  {
+    id: 3,
+    url: "https://raw.githubusercontent.com/etherneomdc3-IT/RAW/main/project3.jpg",
+    title: "M&N Project 3",
+    location: "Bilar, Bohol",
+    type: "Wardrobe"
+  },
   {
     id: 4,
     url: "https://raw.githubusercontent.com/etherneomdc3-IT/RAW/main/project4.jpg",
