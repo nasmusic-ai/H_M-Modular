@@ -210,48 +210,35 @@ export default function App() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section id="gallery" className="py-24 bg-stone-950 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 mb-12 flex justify-between items-end">
-          <div>
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-4">PROJECTS</h2>
-            <p className="text-stone-400">Swipe through our latest modular installations.</p>
-          </div>
-          <div className="hidden md:flex gap-4">
-            <button onClick={() => scroll('left')} className="p-4 rounded-full border border-stone-800 hover:bg-stone-800 text-white transition-colors">
-              <ChevronLeft size={24} />
-            </button>
-            <button onClick={() => scroll('right')} className="p-4 rounded-full border border-stone-800 hover:bg-stone-800 text-white transition-colors">
-              <ChevronRight size={24} />
-            </button>
-          </div>
-        </div>
-        <div ref={scrollRef} className="flex gap-6 overflow-x-auto px-4 md:px-[calc((100vw-1280px)/2)] no-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing" style={{ scrollBehavior: 'smooth' }}>
-          {galleryImages.map(img => (
-            <motion.div key={img.id} className="flex-none w-[85vw] md:w-[400px] snap-center" whileHover={{ y: -10 }}>
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-stone-900 group">
-                <img src={img.url} alt={img.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                  <span className="text-amber-400 text-xs font-bold tracking-widest uppercase mb-2">{img.type}</span>
-                  <h3 className="text-2xl font-display font-bold text-white mb-1">{img.title}</h3>
-                  <div className="flex items-center gap-2 text-stone-300 text-sm">
-                    <MapPin size={14} /> {img.location}
-                  </div>
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 md:hidden">
-                  <div className="bg-black/60 backdrop-blur-md p-3 rounded-xl border border-white/10">
-                    <div className="text-[10px] text-amber-400 font-bold uppercase tracking-widest">{img.type}</div>
-                    <div className="text-white font-bold">{img.title}</div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-        <div className="mt-8 text-center md:hidden">
-          <p className="text-stone-500 text-xs tracking-widest uppercase font-bold">Swipe to explore ( images)</p>
-        </div>
-      </section>
+const galleryImages = [
+  {
+    id: 1,
+    url: 'https://raw.githubusercontent.com/janzel2015/Modular-RAW/blob/main/02.jpg',
+    title: 'Modern Kitchen',
+    type: 'SERVICES',
+    location: 'Manila, Philippines',
+  },
+  {
+    id: 2,
+    url: 'https://raw.githubusercontent.com/janzel2015/Modular-RAW/blob/main/11.jpg',
+    type: 'SERVICES',
+    location: 'Cebu, Philippines',
+  },
+  {
+    id: 3,
+    url: 'https://raw.githubusercontent.com/janzel2015/Modular-RAW/blob/main/12.jpg',
+    title: 'Wardrove',
+    type: 'SERVICES',
+    location: 'Davao, Philippines',
+  },
+  {
+    id: 4,
+    url: 'https://raw.githubusercontent.com/janzel2015/Modular-RAW/blob/main/13.jpg',
+    title: 'Mini bar',
+    type: 'SERVICES',
+    location: 'Baguio, Philippines',
+  },
+];
 
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-stone-950">
