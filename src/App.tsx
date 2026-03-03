@@ -278,7 +278,7 @@ export default function App() {
                   />
                 </div>
                 
-                {/* Overlay */}
+                {/* Hover Overlay - Shows project details on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="text-xl font-bold text-white mb-1">{image.title}</h3>
@@ -301,7 +301,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modal - Opens when image is clicked */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div
