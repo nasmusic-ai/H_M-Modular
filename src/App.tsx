@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Hammer, 
@@ -11,7 +11,6 @@ import {
   X, 
   ChevronRight, 
   ChevronLeft, 
-  CheckCircle2, 
   MapPin, 
   Phone, 
   Facebook, 
@@ -19,8 +18,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 
-// Configuration for the 30 images
-// Using the provided GitHub RAW pattern
+// Configuration for images
 const GITHUB_BASE = "https://raw.githubusercontent.com/etherneomdc3-IT/RAW/main/";
 const LOGO_URL = `${GITHUB_BASE}noellogo.png`;
 const HERO_VIDEO_URL = `${GITHUB_BASE}noel.mp4`;
@@ -47,36 +45,11 @@ const services = [
 ];
 
 const galleryImages = [
-  {
-    id: 1,
-    url: "https://raw.githubusercontent.com/etherneomdc3-IT/RAW/main/project1.jpg",
-    title: "M&N Project 1",
-    location: "Baclayun, Bohol",
-    type: "TV Console"
-  },
-  {
-    id: 2,
-    url: "https://raw.githubusercontent.com/etherneomdc3-IT/RAW/main/project2.jpg",
-    title: "M&N Project 2",
-    location: "Tagbilaran City",
-    type: "Kitchen"
-  },
-  {
-    id: 3,
-    url: "https://raw.githubusercontent.com/etherneomdc3-IT/RAW/main/project3.jpg",
-    title: "M&N Project 3",
-    location: "Bilar, Bohol",
-    type: "Wardrobe"
-  },
-  {
-    id: 4,
-    url: "https://raw.githubusercontent.com/etherneomdc3-IT/RAW/main/project4.jpg",
-    title: "M&N Project 4",
-    location: "Tagbilaran City",
-    type: "Kitchen"
-  }
+  { id: 1, url: `${GITHUB_BASE}project1.jpg`, title: "M&N Project 1", location: "Baclayun, Bohol", type: "TV Console" },
+  { id: 2, url: `${GITHUB_BASE}project2.jpg`, title: "M&N Project 2", location: "Tagbilaran City", type: "Kitchen" },
+  { id: 3, url: `${GITHUB_BASE}project3.jpg`, title: "M&N Project 3", location: "Bilar, Bohol", type: "Wardrobe" },
+  { id: 4, url: `${GITHUB_BASE}project4.jpg`, title: "M&N Project 4", location: "Tagbilaran City", type: "Kitchen" }
 ];
-
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -106,7 +79,7 @@ export default function App() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-8">
-              {['Home', 'About', 'Services', 'Gallery', 'Contact'].map((item) => (
+              {['Home', 'About', 'Materials', 'Gallery', 'Contact'].map((item) => (
                 <a 
                   key={item} 
                   href={`#${item.toLowerCase()}`} 
@@ -140,7 +113,7 @@ export default function App() {
               className="md:hidden bg-stone-900 border-b border-amber-900/30 overflow-hidden"
             >
               <div className="px-4 pt-2 pb-6 space-y-1">
-                {['Home', 'About', 'Services', 'Gallery', 'Contact'].map((item) => (
+                {['Home', 'About', 'Materials', 'Gallery', 'Contact'].map((item) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
@@ -161,28 +134,16 @@ export default function App() {
         </AnimatePresence>
       </nav>
 
-      {/* Hero Section with Video Background */}
+      {/* Hero Section */}
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Video Background */}
         <div className="absolute inset-0 z-0">
-          <video 
-            autoPlay 
-            muted 
-            loop 
-            playsInline
-            className="w-full h-full object-cover opacity-50"
-          >
+          <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-50">
             <source src={HERO_VIDEO_URL} type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-stone-950/80 via-stone-950/40 to-stone-950"></div>
         </div>
-
         <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <span className="inline-block px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold tracking-widest mb-6 border border-emerald-500/20">
               ● BACLAYUN BOHOL SHOWROOM
             </span>
@@ -205,108 +166,33 @@ export default function App() {
         </div>
       </section>
 
-      {/* Stats */}
+      {/* Stats Section */}
       <section className="py-12 bg-stone-900 border-y border-amber-900/20">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { label: 'ESTABLISHED', value: '2018' },
+          {[{ label: 'ESTABLISHED', value: '2018' },
             { label: 'PROJECTS', value: '500+' },
             { label: 'WARRANTY', value: '5 YRS' },
-            { label: 'DELIVERY', value: 'BOHOL' }
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-3xl md:text-4xl font-display font-bold text-amber-400 mb-1">{stat.value}</div>
-              <div className="text-[10px] tracking-widest text-stone-500 font-bold uppercase">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Gallery Section - 30 Image Swipe */}
-      <section id="gallery" className="py-24 bg-stone-950 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 mb-12 flex justify-between items-end">
-          <div>
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-4">Our Work</h2>
-            <p className="text-stone-400">Swipe through 30 of our latest modular installations.</p>
-          </div>
-          <div className="hidden md:flex gap-4">
-            <button 
-              onClick={() => scroll('left')}
-              className="p-4 rounded-full border border-stone-800 hover:bg-stone-800 text-white transition-colors"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button 
-              onClick={() => scroll('right')}
-              className="p-4 rounded-full border border-stone-800 hover:bg-stone-800 text-white transition-colors"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
-        </div>
-
-        {/* Horizontal Swipe Container */}
-        <div 
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto px-4 md:px-[calc((100vw-1280px)/2)] no-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing"
-          style={{ scrollBehavior: 'smooth' }}
-        >
-          {galleryImages.map((img) => (
-            <motion.div 
-              key={img.id}
-              className="flex-none w-[85vw] md:w-[400px] snap-center"
-              whileHover={{ y: -10 }}
-            >
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-stone-900 group">
-                <img 
-                  src={img.url} 
-                  alt={img.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  referrerPolicy="no-referrer"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                  <span className="text-amber-400 text-xs font-bold tracking-widest uppercase mb-2">{img.type}</span>
-                  <h3 className="text-2xl font-display font-bold text-white mb-1">{img.title}</h3>
-                  <div className="flex items-center gap-2 text-stone-300 text-sm">
-                    <MapPin size={14} /> {img.location}
-                  </div>
-                </div>
-                {/* Mobile Label (Visible without hover) */}
-                <div className="absolute bottom-4 left-4 right-4 md:hidden">
-                   <div className="bg-black/60 backdrop-blur-md p-3 rounded-xl border border-white/10">
-                      <div className="text-[10px] text-amber-400 font-bold uppercase tracking-widest">{img.type}</div>
-                      <div className="text-white font-bold">{img.title}</div>
-                   </div>
-                </div>
+            { label: 'DELIVERY', value: 'BOHOL' }].map(stat => (
+              <div key={stat.label} className="text-center">
+                <div className="text-3xl md:text-4xl font-display font-bold text-amber-400 mb-1">{stat.value}</div>
+                <div className="text-[10px] tracking-widest text-stone-500 font-bold uppercase">{stat.label}</div>
               </div>
-            </motion.div>
           ))}
-        </div>
-        
-        <div className="mt-8 text-center md:hidden">
-          <p className="text-stone-500 text-xs tracking-widest uppercase font-bold">Swipe to explore (30 images)</p>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-24 bg-stone-900">
+      {/* Materials Section */}
+      <section id="materials" className="py-24 bg-stone-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">Our Specialties</h2>
+            <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">Materials</h2>
             <p className="text-stone-400 max-w-2xl mx-auto">We use high-quality materials and modern hardware to ensure your cabinets are both beautiful and durable.</p>
           </div>
-
           <div className="grid md:grid-cols-3 gap-8">
-            {services.map((service) => (
+            {services.map(service => (
               <div key={service.title} className="bg-stone-950 rounded-3xl overflow-hidden border border-amber-900/10 hover:border-amber-900/30 transition-colors group">
                 <div className="h-64 overflow-hidden">
-                  <img 
-                    src={service.image} 
-                    alt={service.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
-                  />
+                  <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" referrerPolicy="no-referrer" />
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-display font-bold text-white mb-4">{service.title}</h3>
@@ -324,14 +210,57 @@ export default function App() {
         </div>
       </section>
 
+      {/* Gallery Section */}
+      <section id="gallery" className="py-24 bg-stone-950 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 mb-12 flex justify-between items-end">
+          <div>
+            <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-4">Our Work</h2>
+            <p className="text-stone-400">Swipe through 30 of our latest modular installations.</p>
+          </div>
+          <div className="hidden md:flex gap-4">
+            <button onClick={() => scroll('left')} className="p-4 rounded-full border border-stone-800 hover:bg-stone-800 text-white transition-colors">
+              <ChevronLeft size={24} />
+            </button>
+            <button onClick={() => scroll('right')} className="p-4 rounded-full border border-stone-800 hover:bg-stone-800 text-white transition-colors">
+              <ChevronRight size={24} />
+            </button>
+          </div>
+        </div>
+        <div ref={scrollRef} className="flex gap-6 overflow-x-auto px-4 md:px-[calc((100vw-1280px)/2)] no-scrollbar snap-x snap-mandatory cursor-grab active:cursor-grabbing" style={{ scrollBehavior: 'smooth' }}>
+          {galleryImages.map(img => (
+            <motion.div key={img.id} className="flex-none w-[85vw] md:w-[400px] snap-center" whileHover={{ y: -10 }}>
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-stone-900 group">
+                <img src={img.url} alt={img.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                  <span className="text-amber-400 text-xs font-bold tracking-widest uppercase mb-2">{img.type}</span>
+                  <h3 className="text-2xl font-display font-bold text-white mb-1">{img.title}</h3>
+                  <div className="flex items-center gap-2 text-stone-300 text-sm">
+                    <MapPin size={14} /> {img.location}
+                  </div>
+                </div>
+                <div className="absolute bottom-4 left-4 right-4 md:hidden">
+                  <div className="bg-black/60 backdrop-blur-md p-3 rounded-xl border border-white/10">
+                    <div className="text-[10px] text-amber-400 font-bold uppercase tracking-widest">{img.type}</div>
+                    <div className="text-white font-bold">{img.title}</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-8 text-center md:hidden">
+          <p className="text-stone-500 text-xs tracking-widest uppercase font-bold">Swipe to explore (30 images)</p>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-stone-950">
+        {/* Contact content remains unchanged */}
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-8">Ready to start your project?</h2>
               <p className="text-stone-400 text-lg mb-12">Visit our workshop in baclayun or message us for a free estimate. We deliver and install all over Bohol.</p>
-              
               <div className="space-y-8">
                 <div className="flex items-start gap-6">
                   <div className="w-12 h-12 rounded-2xl bg-amber-600/10 flex items-center justify-center text-amber-400 flex-shrink-0">
