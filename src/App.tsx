@@ -185,7 +185,7 @@ export default function App() {
       <section id="materials" className="py-24 bg-stone-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">Materials</h2>
+            <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">SERVICES</h2>
             <p className="text-stone-400 max-w-2xl mx-auto">We use high-quality materials and modern hardware to ensure your cabinets are both beautiful and durable.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -214,8 +214,8 @@ export default function App() {
       <section id="gallery" className="py-24 bg-stone-950 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 mb-12 flex justify-between items-end">
           <div>
-            <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-4">Our Work</h2>
-            <p className="text-stone-400">Swipe through 30 of our latest modular installations.</p>
+            <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-4">PROJECTS</h2>
+            <p className="text-stone-400">Swipe through our latest modular installations.</p>
           </div>
           <div className="hidden md:flex gap-4">
             <button onClick={() => scroll('left')} className="p-4 rounded-full border border-stone-800 hover:bg-stone-800 text-white transition-colors">
@@ -249,7 +249,7 @@ export default function App() {
           ))}
         </div>
         <div className="mt-8 text-center md:hidden">
-          <p className="text-stone-500 text-xs tracking-widest uppercase font-bold">Swipe to explore (30 images)</p>
+          <p className="text-stone-500 text-xs tracking-widest uppercase font-bold">Swipe to explore ( images)</p>
         </div>
       </section>
 
@@ -277,7 +277,7 @@ export default function App() {
                   </div>
                   <div>
                     <h4 className="text-white font-bold mb-1">Call or Text</h4>
-                    <p className="text-stone-400">+63 912 345 6789</p>
+                    <p className="text-stone-400">+63 9954354710</p>
                   </div>
                 </div>
                 <div className="flex gap-4 pt-4">
@@ -330,7 +330,7 @@ export default function App() {
       <footer className="py-12 bg-stone-950 border-t border-stone-900">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <img src={LOGO_URL} alt="M&N Logo" className="h-12 w-auto mx-auto mb-6 opacity-50 grayscale" referrerPolicy="no-referrer" />
-          <p className="text-stone-600 text-sm mb-4">© 2026 M&N Modular Cabinets. Handcrafted in Bohol, Philippines.</p>
+          <p className="text-stone-600 text-sm mb-4">© 2026 M&N Modular Cabinets. Website Develop by Jorjan Lanaja.</p>
           <div className="flex justify-center gap-6 text-stone-500 text-xs font-bold tracking-widest uppercase">
             <a href="#" className="hover:text-amber-400">Privacy Policy</a>
             <a href="#" className="hover:text-amber-400">Terms of Service</a>
